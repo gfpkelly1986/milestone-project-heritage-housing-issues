@@ -28,6 +28,24 @@ Complete an intro for this project.
 
 ## Business Requirements
 
+- A fictional individual, Lydia Doe, has received an inheritance from a deceased great-grandfather.
+
+Included in the inheritance are four houses located in Ames, Iowa, USA. Although Lydia has an excellent understanding of property prices in her home country of Belgium, she fears that basing her estimates for property worth on her current knowledge of the Iowan market might lead to inaccurate appraisals.
+
+What makes a house desirable and valuable where she comes from might not be the same in Ames, Iowa.
+
+Lydia needs help if she is to maximize the sales price for the inherited properties.
+
+She decides to ask a Data Practitioner for help. Her reasons for doing so are:
+
+- A 
+    - She doesn't know the worth of the properties and does not want to take the risk of inaccurate pricing estimation,
+
+    since there is potentially a reasonable amount of money to be made or lost when selling the four properties.
+
+- B 
+     - She is also interested in predicting the sale price from any house in Ames, Iowa in case of future property ownership in that area.
+
 - Business Requirement 1:
 
     - The client is interested in discovering how the house attributes correlate with the sale price.
@@ -108,84 +126,96 @@ Complete an intro for this project.
 
     - Section 1:
 
-    - Summary Page: 
+        - Summary Page: 
 
-    - Explain and validate the project hypothesis
+        - Explain and validate the project hypothesis
 
-    - Summarise the project. Terminology used. Who and what are being studied and why. What was the initial business requirement?
+        - Summarise the project. 
+            - Terminology used.
+            - Who and what are being studied and why.
+            - What was the initial business requirement?
 
-    - Where the dataset was sourced: Link out to the read me files.
+        - Where the dataset was sourced: Link out to the read me files.
 
     - Section 2:
 
-    - What were the business requirements for the creation of this dashboard solution? What is it that this ML project is going to solve for the customer?
+        - What were the business requirements for the creation of this dashboard solution? What is it that this ML project is going to solve for the customer?
 
 - Page 2
 
     - Section 1:
+        - A page listing your findings related to which features have the strongest correlation to the house sale price.
+            - (Business requirement 1)
+        
+        - Summarize how does the client benefits from this work?
 
-    - Document Initial study of the data.
+        - Show sample of data. Show small dataframes of sample data.
 
-    - Show sample of data.
-
+        - Document Initial study of the data.
+            - This will be an initial correlation analysis of the data.
+            - Assess the distribution of certain variables
     - Section 2:
 
-    - What techniques were used to understand the data.
+        - Document and explain how each of the correlated variables had an effect on the 'Target' variable.
+            - In this case, how certain attributes from the house data i.e. 'features' affected the resulting house price.
 
-    - Show plots of the data analysis and understanding phase of CRISP_DM to demonstrate how the understanding was arrived at.
+        - What techniques were used to understand the data.
 
-- Page 3
-
-    - Section 1:
-
-    - Predictive Analysis Correlation:
-
-    - How the various features in the data correlated with the resulting house price.
-
-    - Plots will be required to demonstrate which features influenced the target sale price the most.
-
-    - These are the house attributes like location and bedroom quantity etc.
+        - Show plots of the data analysis and show an understanding of which phase of CRISP_DM this analysis is relavant to. 
+            - And how the understanding was arrived at.
+        
+        - Plots might be bar,scatter,pie,heatmap etc. Analyse the data and see how best to visualize it.
 
     - Note Here:
 
-    - Important to thoroughly evaluate the performance of the numerical/regression model.
+        - Important to thoroughly evaluate the performance of the numerical/regression model.
 
-    - If the target R2 score is not met other avenues must be explored to achieve model performance!
+        - If the target R2 score and other performance metrics are not met, other avenues must be explored to achieve model performance!
 
-- Page 4
+
+- Page 3: A page displaying the 4 houses' attributes and their respective predicted sale price.
 
     - Section 1:
 
-    - Predictive Analysis Correlation:
+        - Display a message informing the summed predicted price for all 4 inherited houses.
 
-    - Provide a deployed working model that will predict the price of the 4 inherited houses and any inherited houses in the area.
+        - Add interactive input widgets that allow a user to provide real-time house data to predict the sale price.
 
-    - ToDo: How will this look? How will this be achieved?
+        - Quantity of widgets, their content and their functions to be mapped after the data is understood.
+
+    
+- Page 4: A page indicating your project hypothesis(es) and how you validated it across the project.
+
+    - Section 1:
+
+        - Predictive Analysis Correlation:
+
+        - Provide a deployed working model that will predict the price of the 4 inherited houses and any inherited houses in the area.
+
+        - ToDo: How will this look? How will this be achieved?
 
 
+- Page 5:  A technical page displaying your model performance. If you deployed an ML pipeline, you have to display your pipeline steps.
 
-<p>
+    - Section 1:
 
-A project summary page, showing the project dataset summary and the client's requirements.
+        - ML Pipeline performance metrics + ML Pipeline performance outcomes (Summary)
 
-A page listing your findings related to which features have the strongest correlation to the house sale price.
+        - The defined pipeline itself + features used to train the model and why/how they came to be the most important ones
 
-A page displaying the 4 houses' attributes and their respective predicted sale price.
+        - Document the Performance over the test and train sets
 
-It should display a message informing the summed predicted price for all 4 inherited houses.
-
-You should add interactive input widgets that allow a user to provide real-time house data to predict the sale price.
-
-A page indicating your project hypothesis(es) and how you validated it across the project.
-
-A technical page displaying your model performance. If you deployed an ML pipeline, you have to display your pipeline steps.
-
-<p>
 
 
 <p align="right"><a href="#intro">Return to table of contents</a></p><p id="wf"></p>
 
 ## Wireframe of Dashboard.
+![Alt text](jupyter_notebooks/images/readme-images/Heritage-Summary.png)
+![Alt text](jupyter_notebooks/images/readme-images/Heritage-Correlation.png)
+![Alt text](jupyter_notebooks/images/readme-images/Heritage-House-Price.png)
+![Alt text](jupyter_notebooks/images/readme-images/Heritage-Hypothesis.png)
+![Alt text](jupyter_notebooks/images/readme-images/Heritage-Performance.png)
+
 
 <p align="right"><a href="#intro">Return to table of contents</a></p><p id="dep"></p>
 
