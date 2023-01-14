@@ -24,24 +24,60 @@ Complete an intro for this project.
 
 ## Dataset Content
 
+- The dataset for this project is sourced from [Kaggle](https://www.kaggle.com/datasets/codeinstitute/housing-prices-data).
+
+- The features in this dataset are:
+
+    - 1stFlrSF
+    - 2ndFlrSF
+    - BedroomAbvGr
+    - BsmtExposure
+    - BsmtFinSF1
+    - BsmtFinType1
+    - BsmtUnfSF
+    - EnclosedPorch
+    - GarageArea
+    - GarageFinish
+    - GarageYrBuilt
+    - GrLivArea
+    - KitchenQual
+    - LotArea
+    - LotFrontage
+    - MasVnrArea	
+    - OpenPorchSF	
+    - OverallCond	
+    - OverallQual	
+    - TotalBsmtSF
+    - WoodDeckSF
+    - YearBuilt
+    - YearRemodAdd
+
+- The Target variable for this project is;
+
+    - **SalePrice**
+
 <p align="right"><a href="#intro">Return to table of contents</a></p><p id="br"></p>
 
 ## Business Requirements
 
 - A fictional individual, Lydia Doe, has received an inheritance from a deceased great-grandfather.
 
-Included in the inheritance are four houses located in Ames, Iowa, USA. Although Lydia has an excellent understanding of property prices in her home country of Belgium, she fears that basing her estimates for property worth on her current knowledge of the Iowan market might lead to inaccurate appraisals.
+- Included in the inheritance are four houses located in Ames, Iowa, USA. 
 
-What makes a house desirable and valuable where she comes from might not be the same in Ames, Iowa.
+    - Although Lydia has an excellent understanding of property prices in her home country of Belgium
+    
+    - She fears that basing her estimates for property worth on her current knowledge of the Iowan market might lead to inaccurate appraisals.
 
-Lydia needs help if she is to maximize the sales price for the inherited properties.
+    - What makes a house desirable and valuable where she comes from might not be the same in Ames, Iowa.
 
-She decides to ask a Data Practitioner for help. Her reasons for doing so are:
+    - Lydia needs help if she is to maximize the sales price for the inherited properties.
+
+    - She decides to ask a Data Practitioner for help. Her reasons for doing so are:
 
 - A 
     - She doesn't know the worth of the properties and does not want to take the risk of inaccurate pricing estimation,
 
-    since there is potentially a reasonable amount of money to be made or lost when selling the four properties.
+        since there is potentially a reasonable amount of money to be made or lost when selling the four properties.
 
 - B 
      - She is also interested in predicting the sale price from any house in Ames, Iowa in case of future property ownership in that area.
@@ -50,7 +86,7 @@ She decides to ask a Data Practitioner for help. Her reasons for doing so are:
 
     - The client is interested in discovering how the house attributes correlate with the sale price.
     
-    Therefore, the client expects data visualizations of the correlated variables against the sale price to show that.
+        Therefore, the client expects data visualizations of the correlated variables against the sale price to show that.
 
 - Business Requirement 2:
 
@@ -59,6 +95,23 @@ She decides to ask a Data Practitioner for help. Her reasons for doing so are:
 <p align="right"><a href="#intro">Return to table of contents</a></p><p id="hy"></p>
 
 ## Hypothesis and how to validate?
+
+- Hypothesis:
+
+    - Overall quality, greater square footage, and greater number of bedrooms will impact the target variable 'SalePrice' more than other features.
+
+- Validation:
+
+- Correlation analysis showing a relationship between the features above and the target 'SalePrice'.
+
+    - Pearsons, Spearmans showing strong linear or monotonic relationships between the features above and the target 'SalePrice'.
+
+    - Regression analysis showing how these features have a strong cause-effect relationship.
+        - Regression Metrics:
+            - R2 (coefficient of determination)
+            - Mean Squared Error (MSE).
+            - Root Mean Squared Error (RMSE).
+            - Mean Absolute Error (MAE)
 
 <p align="right"><a href="#intro">Return to table of contents</a></p><p id="rt"></p>
 
