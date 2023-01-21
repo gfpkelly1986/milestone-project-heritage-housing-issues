@@ -80,7 +80,7 @@ Complete an intro for this project.
         since there is potentially a reasonable amount of money to be made or lost when selling the four properties.
 
 - B 
-     - She is also interested in predicting the sale price from any house in Ames, Iowa in case of future property ownership in that area.
+     - She is also interested in predicting the sale price from any house in Ames, Iowa in case of future property ownership in that area.<br><br>
 
 - Business Requirement 1:
 
@@ -98,7 +98,7 @@ Complete an intro for this project.
 
 - Hypothesis:
 
-    - Overall quality, greater square footage, and greater number of bedrooms will impact the target variable 'SalePrice' more than other features.
+    - Overall quality, greater square footage, and greater number of bedrooms will correlate with the target variable 'SalePrice' more than other features.
 
 - Validation:
 
@@ -106,12 +106,21 @@ Complete an intro for this project.
 
     - Pearsons, Spearmans showing strong linear or monotonic relationships between the features above and the target 'SalePrice'.
 
-    - Regression analysis showing how these features have a strong cause-effect relationship.
+- Hypothesis:
+
+    - Few features/components will be required to predict SalePrice.
+
+- Validation:
+
+    - Regression analysis showing which features have more impact on the target over others.
         - Regression Metrics:
+            - PCA analysis used to narrow the components which impact variance.
             - R2 (coefficient of determination)
-            - Mean Squared Error (MSE).
-            - Root Mean Squared Error (RMSE).
-            - Mean Absolute Error (MAE)
+                - 0.8 or above for R2 score on train set, without too much deviation on the test set.
+            - Mean Squared Error (MSE), limited deviation between train and test set.
+            - Root Mean Squared Error (RMSE), limited deviation between train and test set.
+            - Mean Absolute Error (MAE), limited deviation between train and test set.
+            
 
 <p align="right"><a href="#intro">Return to table of contents</a></p><p id="rt"></p>
 
@@ -147,7 +156,8 @@ Complete an intro for this project.
 
 - This section relates to the models used.
 
-    - We want an ML model to: Target variable is: 
+    - We want an ML model to:
+    - Target variable is: 
     - Our ideal outcome is
     - The model success metrics are
     - The output is defined as
@@ -155,11 +165,12 @@ Complete an intro for this project.
     - The training data to fit the model comes from: 
         - This dataset contains:
 
-- Prdeict house prices in the Ames, Iowa area.
+- Predict house prices in the Ames, Iowa area.
 
 - This section relates to the models used.
 
-    - We want an ML model to: Target variable is: 
+    - We want an ML model to: 
+    - Target variable is: 
     - Our ideal outcome is
     - The model success metrics are
     - The output is defined as
