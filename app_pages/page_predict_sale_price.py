@@ -14,24 +14,10 @@ def page_predict_sale_price_body():
 
     version = 'v1'
 
-    df_clean_full = load_original_no_nan_data()
     df_inherited = load_inherited_houses()
-
-    house_a = df_inherited.iloc[[0]]
-    house_b = df_inherited.iloc[[1]]
-    house_c = df_inherited.iloc[[2]]
-    house_d = df_inherited.iloc[[3]]
 
     predict_sale_price_model = load_pkl_file("outputs/ml_pipeline/predict_sale_price/v1/deploy_pca_pipeline.pkl")
 
-    X_train = pd.read_csv(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/X_train.csv")
-    X_test = pd.read_csv(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/X_test.csv")
-    y_train = pd.read_csv(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/y_train.csv").values
-    y_test = pd.read_csv(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/y_test.csv").values
 
     st.write("### Predict House Sale Price")
 
@@ -44,20 +30,12 @@ def page_predict_sale_price_body():
 
     st.write("---")
 
-    if st.checkbox("Inherited"):
+    if st.checkbox("Click to view the 'Inherited Houses' dataset"):
         st.write(df_inherited)
 
-    if st.checkbox("cleaned"):
-        st.write(df_clean_full.head(2))
-
-    if st.checkbox("A"):
-        st.write(house_a)
-
-    st.write("---")
-    st.write(df_inherited.columns)
     st.write("---")
 
-
+    st.write(f"- Run the predicton button below to view the models prediction for the four inherited houses")
 
     X_live = df_inherited
     
@@ -67,23 +45,5 @@ def page_predict_sale_price_body():
     
 
 
-def inherited_houses_dropdown():
-
-    df_inherited = load_inherited_houses()
-
-    house_a = df_inherited.iloc[[0]]
-    house_b = df_inherited.iloc[[1]]
-    house_c = df_inherited.iloc[[2]]
-    house_d = df_inherited.iloc[[3]]
-
-    X_live = pd.DataFrame([], index=[0])
-
-    option = st.selectbox("Choose one of the houses to make a prediction on its Sale Price",
-    ('House A', 'House B', 'House C', 'House D'))
-
-    if option == 'House A':
-        X_live = X_live.append(house_a)
-    
-    return X_live
 
 
