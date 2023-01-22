@@ -12,13 +12,14 @@ def page_summary_body():
         f" - **Quantity of data: ** There were 1460 rows of data in the table which was analyzed."
     )
 
-    # Link to README file, so the users can have access to full project documentation
+    st.write("---")
+
     st.write(
         f"* For additional information, please visit and **read** the "
         f"[Project README file](https://github.com/gfpkelly1986/milestone-project-heritage-housing-issues).")
     
-
-    # copied from README file - "Business Requirements" section
+    st.write("---")
+    
     st.success(
         f"**The project has 2 business requirements:**\n"
         f"- Business Requirement 1:- The client is interested in discovering how the house attributes correlate with the sale price.\n "

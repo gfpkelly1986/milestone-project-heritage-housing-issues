@@ -17,16 +17,19 @@ def page_correlation_body():
 
     if st.checkbox("Original Data Sample"):
         st.write(
-            f"* The dataset has {df.shape[0]} rows and {df.shape[1]} columns, "
+            f"* The dataset has {df_no_nan.shape[0]} rows and {df_no_nan.shape[1]} columns, "
             f"find below the first 10 rows.")
 
-        st.write(df.head(10))
+        st.write(df_no_nan.head(10))
 
     st.write("### Correlation Analysis")
     st.info(
         f"- The client is interested in discovering how the various attributes of the house correlate with the final sale price.\n"
-        f" - Visualisations in the form of plots have been provided to help with understanding the analysis which was carried out."
+        f" - Visualisations in the form of plots have been provided to help with understanding the analysis which was carried out.\n"
+        f" - This analysis satisfies Business Requirement 1.\n"
     )
+
+    st.write("---")
 
     st.info(f"#### **What analysis was carried out:**\n"
             f" - Categorical variables were one hot encoded.\n"
@@ -35,6 +38,7 @@ def page_correlation_body():
             f" - This variable is influenced by other variables in the data. This is visualised below.\n"
             f" - Select the checkboxes below to view these plots and understand the correlations")
 
+    st.write("---")
 
     if st.checkbox("How 'Overall Quality' of the property correlates with SalePrice"):
         plot_correlation_overall_qual_sale_price(df_further_analyis)

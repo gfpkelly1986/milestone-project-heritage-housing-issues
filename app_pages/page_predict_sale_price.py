@@ -1,57 +1,89 @@
-# import streamlit as st
-# import pandas as pd
-# import matplotlib.pyplot as plt
-# from src.data_management import load_telco_data, load_pkl_file
-# from src.machine_learning.evaluate_clf import clf_performance
+import plotly.express as px
+import numpy as np
+import pandas as pd
+from feature_engine.discretisation import ArbitraryDiscretiser
+import streamlit as st
+from src.data_management import load_original_no_nan_data, load_inherited_houses, load_pkl_file
+from src.machine_learning.predict_sales_price import predict_inherited_sale_price
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set_style("whitegrid")
 
 
-# def page_predict_tenure_body():
+def page_predict_sale_price_body():
 
-#     # load tenure pipeline files
-#     version = 'v1'
-#     tenure_pipe = load_pkl_file(
-#         f"outputs/ml_pipeline/predict_tenure/{version}/clf_pipeline.pkl")
-#     tenure_labels_map = load_pkl_file(
-#         f"outputs/ml_pipeline/predict_tenure/{version}/label_map.pkl")
-#     tenure_feat_importance = plt.imread(
-#         f"outputs/ml_pipeline/predict_tenure/{version}/features_importance.png")
-#     X_train = pd.read_csv(
-#         f"outputs/ml_pipeline/predict_tenure/{version}/X_train.csv")
-#     X_test = pd.read_csv(
-#         f"outputs/ml_pipeline/predict_tenure/{version}/X_test.csv")
-#     y_train = pd.read_csv(
-#         f"outputs/ml_pipeline/predict_tenure/{version}/y_train.csv")
-#     y_test = pd.read_csv(
-#         f"outputs/ml_pipeline/predict_tenure/{version}/y_test.csv")
+    version = 'v1'
 
-#     st.write("### ML Pipeline: Predict Prospect Tenure")
-#     # display pipeline training summary conclusions
-#     st.info(
-#         f"* Initially we wanted to have a Regressor model to predict tenure for a likely "
-#         f"churnable prospect, but the **regressor performance did not meet project requirement**: "
-#         f"0.7 of R2 Score on train and test sets. "
-#         f"We converted the target to classes and transformed the ML task into a **classification** problem. \n"
-#         f"* The pipeline was tuned aiming at least 0.8 Recall on '<4 months' class, on train and test sets, "
-#         f"since we are interested in this project, to detect any prospect that may churn soon. "
-#         f"The classifer performance was 0.8 on both sets.\n"
-#         f"* We notice that '<4.0' and '+20.0' classes have reasonable performance levels, where "
-#         f"'4.0 to 20.0' performance is poor. This fact will be a limitation of our project.")
-#     st.write("---")
+    df_clean_full = load_original_no_nan_data()
+    df_inherited = load_inherited_houses()
 
-#     # show pipeline steps
-#     st.write("* ML pipeline to predict tenure when prospect is expected to churn.")
-#     st.write(tenure_pipe)
-#     st.write("---")
+    house_a = df_inherited.iloc[[0]]
+    house_b = df_inherited.iloc[[1]]
+    house_c = df_inherited.iloc[[2]]
+    house_d = df_inherited.iloc[[3]]
 
-#     # show best features
-#     st.write("* The features the model was trained and their importance.")
-#     st.write(X_train.columns.to_list())
-#     st.image(tenure_feat_importance)
-#     st.write("---")
+    predict_sale_price_model = load_pkl_file("outputs/ml_pipeline/predict_sale_price/v1/deploy_pca_pipeline.pkl")
 
-#     # evaluate performance on both sets
-#     st.write("### Pipeline Performance")
-#     clf_performance(X_train=X_train, y_train=y_train,
-#                     X_test=X_test, y_test=y_test,
-#                     pipeline=tenure_pipe,
-#                     label_map=tenure_labels_map)
+    X_train = pd.read_csv(
+        f"outputs/ml_pipeline/predict_sale_price/{version}/X_train.csv")
+    X_test = pd.read_csv(
+        f"outputs/ml_pipeline/predict_sale_price/{version}/X_test.csv")
+    y_train = pd.read_csv(
+        f"outputs/ml_pipeline/predict_sale_price/{version}/y_train.csv").values
+    y_test = pd.read_csv(
+        f"outputs/ml_pipeline/predict_sale_price/{version}/y_test.csv").values
+
+    st.write("### Predict House Sale Price")
+
+    st.info(f"- The client has inherited 4 properties in Ames, Iowa."
+            f" She wants to maximize her sale price on these 4 inherited houses.\n"
+            f"- The model used to predict sale price uses 'principal component analysis'.\n"
+            f"- It has explained 92.05% of the variance in the data using just 2 components\n"
+            f"- This model satisfies Business Requirement 2.\n"
+            f"\n")
+
+    st.write("---")
+
+    if st.checkbox("Inherited"):
+        st.write(df_inherited)
+
+    if st.checkbox("cleaned"):
+        st.write(df_clean_full.head(2))
+
+    if st.checkbox("A"):
+        st.write(house_a)
+
+    st.write("---")
+    st.write(df_inherited.columns)
+    st.write("---")
+
+
+
+    X_live = df_inherited
+    
+
+    if st.button("Run Predictive Analysis"):
+        predicted_price = predict_inherited_sale_price(X_live, predict_sale_price_model)
+    
+
+
+def inherited_houses_dropdown():
+
+    df_inherited = load_inherited_houses()
+
+    house_a = df_inherited.iloc[[0]]
+    house_b = df_inherited.iloc[[1]]
+    house_c = df_inherited.iloc[[2]]
+    house_d = df_inherited.iloc[[3]]
+
+    X_live = pd.DataFrame([], index=[0])
+
+    option = st.selectbox("Choose one of the houses to make a prediction on its Sale Price",
+    ('House A', 'House B', 'House C', 'House D'))
+
+    if option == 'House A':
+        X_live = X_live.append(house_a)
+    
+    return X_live
+
+
