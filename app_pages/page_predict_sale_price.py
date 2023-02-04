@@ -43,6 +43,8 @@ def page_predict_sale_price_body():
     if st.button("Run Predictive Analysis"):
         predicted_price = predict_inherited_sale_price(X_live, predict_sale_price_model)
     
+    
+    
 
 
 

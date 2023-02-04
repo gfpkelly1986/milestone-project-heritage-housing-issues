@@ -293,4 +293,10 @@ Complete an intro for this project.
 
 - Credit any external code
 
+    - st.write(f"{test:,}")
+        - This line of code was taken from a StackOverflow example at this link [StackOverflow](https://stackoverflow.com/questions/1823058/how-to-print-a-number-using-commas-as-thousands-separators)
+
 - Credit code institute code
+
+    - *Code institute code:*
+        - Functions: List all the CI functions used here!
