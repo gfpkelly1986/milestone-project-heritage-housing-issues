@@ -10,6 +10,10 @@ sns.set_style("whitegrid")
 
 def page_correlation_body():
 
+    spearman_results = plt.imread(f"jupyter_notebooks/images/analysis-images/Spearmans-full-set.png")
+    
+    pearson_results = plt.imread(f"jupyter_notebooks/images/analysis-images/Pearsons-full-set.png")
+
     st.write('### Correlation Analysis')
 
     df_no_nan = load_original_no_nan_data()
@@ -38,6 +42,11 @@ def page_correlation_body():
             f" - This variable is influenced by other variables in the data. This is visualised below.\n"
             f" - Select the checkboxes below to view these plots and understand the correlations")
 
+    st.write("---")
+    st.write('Spearman Correltation Test Results')
+    st.image(spearman_results)
+    st.write('Pearson Correlation Test Results')
+    st.image(pearson_results)
     st.write("---")
 
     if st.checkbox("How 'Overall Quality' of the property correlates with SalePrice"):
