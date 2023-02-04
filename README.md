@@ -157,7 +157,7 @@ Complete an intro for this project.
     -  Model failure is to be defined as:
         - (A) a model which makes predictions outside of the range specified for acceptable predictions.
         - (B) A model which predicts higher values for smaller houses than for larger houses. It is expected that square footage/area will be a key driver of 'Sale Price'.
-    - The output is defined as: Predicted Sale Price. This is a continuous value. 
+    - The output is defined as: *Predicted Sale Price*. This is a continuous value. 
     - The training data to fit the model comes from: [kaggle.com](https://www.kaggle.com/datasets/codeinstitute/housing-prices-data)
         - This dataset contains: 1460 rows and 24 of data.
         - The cheapest house in the data was 34,900 with the most expensive being 755,000.
