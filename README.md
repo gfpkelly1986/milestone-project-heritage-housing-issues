@@ -75,8 +75,8 @@ Complete an intro for this project.
     - She decides to ask a Data Practitioner for help. Her reasons for doing so are:
 
 - A 
-    - She doesn't know the worth of the properties and does not want to take the risk of inaccurate pricing estimation,
-
+    - She doesn't know the worth of the properties and does not want to take the risk of inaccurate pricing estimation, 
+        
         since there is potentially a reasonable amount of money to be made or lost when selling the four properties.
 
 - B 
@@ -98,7 +98,7 @@ Complete an intro for this project.
 
 - Hypothesis:
 
-    - Overall quality, greater square footage, and greater number of bedrooms will correlate with the target variable 'SalePrice' more than other features.
+    - Overall quality and greater square footage will correlate with the target variable 'SalePrice' more than other features.
 
 - Validation:
 
@@ -138,47 +138,28 @@ Complete an intro for this project.
 
     - Use either conventional ML or Neural Networks to map the relationships between the features and the target.
 
-    - Note: consider changing the ML task from Regression to Classification if you find a valid rationale for that.
+    - Carry out hyperparameter optimization for the best performing algorithm.
 
-        - Evaluating the the r2 score/business requirement success definition will determine this.
-
-    - Conduct an extensive hyperparameter optimization for a given algorithm.
-
-        - Refer to the Scikit-learn lesson, Unit Notebook 6: Cross-Validation Search Part 2.
-
-            - At the end of the notebook, you will find a list of hyperparameter options and values to start with, for the family of algorithms we covered in the course.
 
 <p align="right"><a href="#intro">Return to table of contents</a></p><p id="ml"></p>
 
 ## ML Business Case
 
-- Understand Correlation between house attributes and the resulting sale price.
+#### Predict house prices in the Ames, Iowa area.
 
-- This section relates to the models used.
+- Regression Model  
 
-    - We want an ML model to:
-    - Target variable is: 
-    - Our ideal outcome is
-    - The model success metrics are
-    - The output is defined as
-    - Heuristics if any
-    - The training data to fit the model comes from: 
-        - This dataset contains:
-
-- Predict house prices in the Ames, Iowa area.
-
-- This section relates to the models used.
-
-    - We want an ML model to: 
-    - Target variable is: 
-    - Our ideal outcome is
-    - The model success metrics are
-    - The output is defined as
-    - Heuristics if any
-    - The training data to fit the model comes from: 
-        - This dataset contains:
-
-- If clustering or further models were necessary document them here.
+    - We want an ML model to: make predictions, for the continuous target variable 'Sale Price', for 4 houses which the client has inherited.
+        - It is a supervised, multi-dimensional model.
+        - Using PCA analysis, the model used two components to explain 92.05% of the data.
+    - Our ideal outcome is: to provide the client with a model that will predict the sale price of her inherited house to within +- 0.05% of the realised sale price.
+    - The model success metrics are: 0.8 or above on both the Train and Test sets R2 score.
+        - (A) Model failure is to be defined as a model which makes predictions outside of the range specified for acceptable predictions.
+        - (B) A model which predicted higher values for smaller houses than for larger houses. It is expected that square footage/area will be a key driver of 'Sale Price'.
+    - The output is defined as: Predicted Sale Price. This is a continuous value. 
+    - The training data to fit the model comes from: [kaggle.com](https://www.kaggle.com/datasets/codeinstitute/housing-prices-data)
+        - This dataset contains: 1460 rows and 24 of data.
+        - The cheapest house in the data was 34,900 with the most expensive being 755,000.
 
 <p align="right"><a href="#intro">Return to table of contents</a></p><p id="dd"></p>
 
@@ -229,12 +210,6 @@ Complete an intro for this project.
             - And how the understanding was arrived at.
         
         - Plots might be bar,scatter,pie,heatmap etc. Analyse the data and see how best to visualize it.
-
-    - Note Here:
-
-        - Important to thoroughly evaluate the performance of the numerical/regression model.
-
-        - If the target R2 score and other performance metrics are not met, other avenues must be explored to achieve model performance!
 
 
 - Page 3: A page displaying the 4 houses' attributes and their respective predicted sale price.
