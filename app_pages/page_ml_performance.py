@@ -14,7 +14,7 @@ def page_model_performance_body():
     predict_sales_pipeline = load_pkl_file("outputs/ml_pipeline/predict_sale_price/v1/deploy_pca_pipeline.pkl")
 
     actual_vs_prediction_plots = plt.imread(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/GBR-train-test-plots.png")
+        f"outputs/ml_pipeline/predict_sale_price/{version}/GBR-train-test-plots2.png")
 
     X_train = pd.read_csv(
         f"outputs/ml_pipeline/predict_sale_price/{version}/X_train.csv")
