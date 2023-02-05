@@ -177,7 +177,6 @@ Complete an intro for this project.
         - Explain and validate the project hypothesis
 
         - Summarise the project. 
-            - Terminology used.
             - Who and what are being studied and why.
             - What was the initial business requirement?
 
@@ -185,9 +184,16 @@ Complete an intro for this project.
 
     - Section 2:
 
-        - What were the business requirements for the creation of this dashboard solution? What is it that this ML project is going to solve for the customer?
+        - What were the business requirements for the creation of this dashboard solution? What is it that this ML project is going to solve for the customer?<br><br>
 
-- Page 2
+- Page 2: A page indicating your project hypothesis(es) and how you validated it across the project.
+
+    - Section 1:
+        - Project Hypothesis<br>
+    - Section 2:
+        - Hypothesis validation<br>
+    
+- Page 3
 
     - Section 1:
         - A page listing your findings related to which features have the strongest correlation to the house sale price.
@@ -212,38 +218,31 @@ Complete an intro for this project.
         
         - Plots might be bar,scatter,pie,heatmap etc. Analyse the data and see how best to visualize it.
 
-
-- Page 3: A page displaying the 4 houses' attributes and their respective predicted sale price.
+- Page 4: A page displaying the 4 houses' attributes and their respective predicted sale price.
 
     - Section 1:
 
-        - Display a message informing the summed predicted price for all 4 inherited houses.
+        - Overview of how this ML model satisfies Business requirement 1.
 
-        - Add interactive input widgets that allow a user to provide real-time house data to predict the sale price.
+        - View the inherited dataset of house in a dataframe.
 
-        - Quantity of widgets, their content and their functions to be mapped after the data is understood.
+    - Section 2:
 
+        - Functionality to run predictive analysis.
+
+        - Display the predicted results and show a total for them.
     
-- Page 4: A page indicating your project hypothesis(es) and how you validated it across the project.
-
-    - Section 1:
-
-        - Predictive Analysis Correlation:
-
-        - Provide a deployed working model that will predict the price of the 4 inherited houses and any inherited houses in the area.
-
-        - ToDo: How will this look? How will this be achieved?
-
 
 - Page 5:  A technical page displaying your model performance. If you deployed an ML pipeline, you have to display your pipeline steps.
 
     - Section 1:
-
         - ML Pipeline performance metrics + ML Pipeline performance outcomes (Summary)
 
         - The defined pipeline itself + features used to train the model and why/how they came to be the most important ones
-
+    - Section 2:
         - Document the Performance over the test and train sets
+        - Display plots of performance over train and test sets
+        - Interpret results to offer explantion of the plots.
 
 
 
@@ -261,42 +260,91 @@ Complete an intro for this project.
 
 ## Deployment of a Streamlit Application
 
+- 
+
 <p align="right"><a href="#intro">Return to table of contents</a></p><p id="tu"></p>
 
 ## Technologies Used
 
-- Libraries and Packages Used for this Machine Learning Project.
+- Main Libraries and Packages Used for this Machine Learning Project.
 
-    - Library Name
-        - Specific ecample on how this library was used.
+    - Pandas
+        - Pandas is an open source data analysis tool built on top of Python. It is used throughout the project.
+        - [pandas documentation](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.iat.html)
 
-    - Library Name
-        - Specific ecample on how this library was used.
+    - Matplotlib
+        - Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python.
+        -  [matplotlib documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imshow.html)
+    
+    - Seaborn
+        - An interface for drawing attractive and informative statistical graphics.
+        -  [seaborn documentation](https://seaborn.pydata.org/)
+    
+    - Numpy
+        - Used for scientific computing in Python. Numpy provides a multidimensional array object and a host of powerful methods for data manipulation.
+        -  [numpy documentation](https://numpy.org/doc/stable/)
+    
+    - SciKit-Learn
+        - Used to train and build ML models using various algorithims.
+        -  [scikit-learn documentation](https://scikit-learn.org/stable/user_guide.html)
+    
+    - Google Sheets
+        - Used to track which transformers were to be applied to each of the dataframe columns.
+        - ![google sheets feature engineering](jupyter_notebooks/images/analysis-images/feature-engineering-gsheets.png)
+
+    - Kaggle
+        - kaggle==1.5.12 was installed and a json authorization token issued by kaggle to access the dataset via kaggles API.
+
+    - Streamlit
+        - Streamlit was used to provide a front end dashboard for this project.
+        - [Streamlit documentation](https://docs.streamlit.io/)
 
 <p align="right"><a href="#intro">Return to table of contents</a></p><p id="bu"></p>
 
 ## Bugs
 
-- Live Bugs
-
 - Solved Bugs
     - Deployment error:
         - Changed Python version from python-3.8.15 to python-3.8.16 as suggested by Niel_CI to
-        
-            eliminate the error of Heroku-Stack-22 being incompatible with the python version which was installed after forking the repository. 
+        eliminate the error of Heroku-Stack-22 being incompatible with the python version which was installed after forking the repository. 
          
-            Python version: python-3.8.16 is the version used by Heroku-20.
+        - Python version: python-3.8.16 is the version used by Heroku-20.
+
+    - Issue with plots not displaying correctly, or at all, in GitPod
+        - Thank you to Niel in CI for help with this bug. %matplotlib inline placed before the code where the plots were drawn solved this issue.
+        - I had to add it to the 'FeatureEngineeringAnalysis' function provided by CI on line 7 where additional columns are created and also for some of my own plots.
 
 <p align="right"><a href="#intro">Return to table of contents</a></p><p id="cr"></p>
 
 ## Credits
 
-- Credit any external code
+- External Code:
 
     - st.write(f"{test:,}")
-        - This line of code was taken from a StackOverflow example at this link [StackOverflow](https://stackoverflow.com/questions/1823058/how-to-print-a-number-using-commas-as-thousands-separators)
+        - This line of code was taken from a StackOverflow example at this link [StackOverflow](https://stackoverflow.com/questions/1823058/how-to-print-a-number-using-commas-as-thousands-separators).
 
-- Credit code institute code
+- *Code Institute Code:*
 
-    - *Code institute code:*
-        - Functions: List all the CI functions used here!
+    - Functions Provided: 
+        - def heatmap_corr()
+        - def heatmap_pps()
+        - def CalculateCorrAndPPS()
+        - def DisplayCorrAndPPS()
+        - def EvaluateMissingData()
+        - def FeatureEngineeringAnalysis()
+        - def check_user_entry_on_analysis_type()
+        - def check_missing_values()
+        - def define_list_column_transformers()
+        - def apply_transformers()
+        - def transformer_evaluation()
+        - def DiagnosticPlots_Categories()
+        - def FeatEngineering_CategoricalEncoder()
+        - def FeatEngineering_OutlierWinsorizer()
+        - def FeatEngineering_Numerical()
+        - def regression_evaluation()
+        - def regression_evaluation_plots()
+        - def pca_components_analysis()
+
+- Custom Class Provided:
+
+    - class HyperparameterOptimizationSearch:
