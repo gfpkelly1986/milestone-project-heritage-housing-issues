@@ -1,7 +1,5 @@
-import plotly.express as px
 import numpy as np
 import pandas as pd
-from feature_engine.discretisation import ArbitraryDiscretiser
 import streamlit as st
 from src.data_management import load_original_no_nan_data, load_inherited_houses, load_pkl_file
 from src.machine_learning.predict_sales_price import predict_inherited_sale_price
