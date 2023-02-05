@@ -258,9 +258,51 @@ Complete an intro for this project.
 
 <p align="right"><a href="#intro">Return to table of contents</a></p><p id="dep"></p>
 
-## Deployment of a Streamlit Application
+## Deployment of a Streamlit Application to Heroku
 
-- 
+- Deployment of a Streamlit application to Heroku is straightforward but there are some thing to watch out for.
+
+- Files needed for deployment
+    - requirements.txt file
+        - This file contains all the libraries needed for the application to run correctly.
+
+    ![Sample of a requirements file](jupyter_notebooks/images/readme-images/requirementsfile.png)
+
+    - setup.shfile
+        - This is a shell file tha tHeroku needs when running the application. It is referenced in the Procfile below.
+
+    ![sample of setup.sh file](jupyter_notebooks/images/readme-images/seupshfile.png)
+
+    - runtime.txt file
+
+        - This will contain your Python version. It must match the Heroku build stack. Further elaboration on this below.<br><br>
+
+    - Procfile
+        - This file contains the commands needed for Heroku to run the application.
+
+    ![procfile example](jupyter_notebooks/images/readme-images/procfile-streamlit.png)
+
+    - Once all these files are created and pushed to your repository you are ready to follow these steps:
+
+        1. Set up a new app using the Heroku dashboard interface.
+        2. Open the apps dashboard and under the deploy tab, connect your application to your GitHub repository
+            - You can choose to deploy manually or automatically.
+        3. Choose the branch you want to deploy, typically 'main' and select 'Deploy Branch'<br><br>
+    
+    **If using GitPod as your IDE of choice, you may run into the following issue:**
+
+    - You are using a version of python that does not match the Heroku stack version and want to log into Heroku from the CLI to change the stack:set value.
+
+        - Heroku has MFA enabled on your account. When you try to log in from the CLI you will not be allowed and are asked to log in from the browser. When you are redirected you get an IP address mismatch. To get around this I cloned the application locally in vs-code and logged in from there. I was then able to change the stack set like so:
+
+            - heroku stack:set heroku-20 -a appname
+    
+    - I had attempted to change the python version to python-3.8.16 to match the Heroku-22 stack version but the build failed in Heroku.
+
+    - I also attempted to login to Heroku from the GitPod CLI by using an API key but kept getting 'Invalid Credentials' error:
+        -  heroku config:set HEROKU_API_KEY=yourkey --app appname<br><br>
+
+    - Once I cloned locally I had no issue logging into Heroku from the browser when redirected in the CLI.
 
 <p align="right"><a href="#intro">Return to table of contents</a></p><p id="tu"></p>
 
@@ -305,10 +347,7 @@ Complete an intro for this project.
 
 - Solved Bugs
     - Deployment error:
-        - Changed Python version from python-3.8.15 to python-3.8.16 as suggested by Niel_CI to
-        eliminate the error of Heroku-Stack-22 being incompatible with the python version which was installed after forking the repository. 
-         
-        - Python version: python-3.8.16 is the version used by Heroku-20.
+        - Issue with Heroku stack Python support. The project was cloned locally in vs-code and Heroku stack changed to 20 for this project.
 
     - Issue with plots not displaying correctly, or at all, in GitPod
         - Thank you to Niel in CI for help with this bug. %matplotlib inline placed before the code where the plots were drawn solved this issue.
