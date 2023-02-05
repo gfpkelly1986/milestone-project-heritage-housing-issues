@@ -71,7 +71,7 @@ def page_correlation_body():
         st.write("Modern houses showing correlation with sale price. Modern houses seem to have greater space and better finishes and thus a greater sale price.")
 
     if st.checkbox("Spacious houses are more common in modern builds, which correlates with higher Sale Price"):
-        plot_modern_house_sale_price_hue_overall_qual(df_further_analyis)
+        plot_modern_house_sale_price_hue_1stFlrSF(df_further_analyis)
         st.write("The above plot shows a greater number of larger houses after about 1970. This correlates with higher sale price.")
 
     if st.checkbox("How 'Kitchen Quality' is correlated with other features which correlate with SalePrice"):
