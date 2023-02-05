@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import plotly.express as px
 from src.data_management import load_original_no_nan_data, load_pkl_file
 from src.machine_learning.evaluate import regression_performance, regression_evaluation
 
@@ -29,8 +28,8 @@ def page_model_performance_body():
 
     st.info(f"- This model used Principal Component Analysis with 2 components\n"
             f"- It explained 92.05% of the variance in the data with these components\n"
-            f"- The R2 score for the Train and Test sets are 0.871 and 0.844\n"
-            f"- \n")
+            f"- The R2 score was used as a performance metric for this model. Values above 0.8 for train and test sets were deemed acceptable.\n"
+            f"- The R2 score for the Train and Test sets are 0.879 and 0.857 respectively.\n")
 
     st.write("---")
     st.write(f"- The Pipeline used for this model is shown below:\n")
@@ -47,4 +46,5 @@ def page_model_performance_body():
     st.write(f"- Plot showing actual vs predicted outcomes for both Train and Test sets shown below:\n")
     st.image(actual_vs_prediction_plots)
 
-    st.write('TO DO: Add more interpretations/evaluations')
+    st.success(f"- When a regression line is plotted correctly, about half of the data points will be above the line and the other half will be below the line.\n\n"
+            f"- The plots above show that both the Train and Test sets are performing well. This is confirmed by the R2 score above")
