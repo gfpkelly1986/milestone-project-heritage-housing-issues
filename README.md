@@ -2,14 +2,37 @@
 
 ### Predictive model for the sale of house prices in Ames, Iowa
 
-<p href="#intro" id="intro"> - Intended Purpose of This Project:
-Complete an intro for this project.
+![Dasboard Image](jupyter_notebooks/images/readme-images/Dashboard-Image.png)
+
+<br><br><p href="#intro" id="intro">
+
+- Intended Purpose of This Project:
+
+- This machine learning project was undertaken for my fifth project with the Code Institute, which was part of the Predictive Analytics module. We were set the task of building an ML pipeline which would predict the sale price of 4 houses, which were inherited by a fictional indivdual called Lydia Doe, based on various factors such as overall quality, size in square feet, number of rooms, age of the property, and others (full dataset features below). The machine learning task was a regression task.
+
+- The project followed the CRISP-DM workflow phases of: 
+    - Business Understanding 
+    - Data Understanding
+    - Data Preparation
+    - Modelling
+    - Evaluation
+    - Deployment
+
+- The project had 2 business requirements:
+    1. Carry out a correlation analyis to show which house attributes correlate with Sale Price.
+    2. Deploy a pipeline to predict the sale price of Lydia's inherited houses.
+
+- The regression model was evaluated using mainly the R2 score, which to satisfy the business requirements needed to have a value of 0.8 or above for both the Train and Test sets.
+
+- The business requirements are satisfied by the Streamlit dashboard application which encompasses a page to view the correlation analysis, the predicted house values and the performance of the model.
+
 </p>
 
 ## Table of contents
 - <a href="#dc">Dataset Content</a>
 - <a href="#br">Business Requirements</a>
 - <a href="#hy">Hypothesis and how to validate?</a>
+- <a href="#us">User Stories</a>
 - <a href="#rt">The rationale to map the business requirements to the Data Visualizations and ML tasks</a>
 - <a href="#ml">ML Business Case</a>
 - <a href="#dd">Dashboard Design</a>
@@ -29,28 +52,51 @@ Complete an intro for this project.
 - The features in this dataset are:
 
     - 1stFlrSF
+        - First floor square feet
     - 2ndFlrSF
+        - Second floor square feet
     - BedroomAbvGr
+        - Bedrooms above ground floor
     - BsmtExposure
+        - Basement exposure => Does the property have windows at basement level
     - BsmtFinSF1
+        - The quantity of finished area in the basement of the properties
     - BsmtFinType1
+        - Categorical variable that describes the quality and condition of the finished area in a basement
     - BsmtUnfSF
+        - The quantity of unfinished area in the basement
     - EnclosedPorch
+        - Whether or not the property has an enclosed porch
     - GarageArea
+        - Overall garage area
     - GarageFinish
+        - Categorical variable relating to the standard of finish in the garage, Unf for unfinished
     - GarageYrBuilt
+        - The year the garage was built
     - GrLivArea
+        - The livable area contained on the ground floor
     - KitchenQual
+        - A categorical rating of the quality of kitchen in the property
     - LotArea
+        - Total area of land with the property in Square Feet
     - LotFrontage
-    - MasVnrArea	
-    - OpenPorchSF	
-    - OverallCond	
-    - OverallQual	
+        -  The linear feet of street-facing footage belonging to a property
+    - MasVnrArea
+        - Area of finished masonary on a property	
+    - OpenPorchSF
+        - Area of open porch measured in square feet	
+    - OverallCond
+        - This is a rating attributed mostly to structure, plumbing, electrical conditions of a property
+    - OverallQual
+        - This is a rating attributed mostly to the style and quality of finishes in a property
     - TotalBsmtSF
+        - The total area in the basment measured in square feet
     - WoodDeckSF
+        - The total area of decking in a property
     - YearBuilt
+        - The year the property was built
     - YearRemodAdd
+        - The year and re-modelling or renovations took place
 
 - The Target variable for this project is;
 
@@ -120,7 +166,48 @@ Complete an intro for this project.
             - Mean Squared Error (MSE), limited deviation between train and test set.
             - Root Mean Squared Error (RMSE), limited deviation between train and test set.
             - Mean Absolute Error (MAE), limited deviation between train and test set.
-            
+
+- Hypothesis:
+
+    - Modern spacious homes are more likely to sell at a higher price than their older counterparts.
+
+- Validation
+
+    - A correlation analysis, with plots, showing correlation between yearbuilt and high sale values.
+
+
+
+<p align="right"><a href="#intro">Return to table of contents</a></p><p id="us"></p>
+
+## User Stories
+
+- As a beneficiary of 4 houses I want to understand how house attributes correlate with sale price so I can understand the market better in Iowa.
+
+    - Data understanding phase of the CRISP-DM workflow.
+    ### Tasks
+    - Prepare the data so it can be studied correctly.
+        - Remove null values if present
+        - Categorize variables if required
+        - Group variables if required
+        - Drop variables with no value to the end results if required
+    - Carry out a correlation analysis on the dataset to understand and show via plots which attributes correlate with saleprice more than others.
+    - Perform both Spearman and Pearson analysis to show which attributes correlate with sale price.
+    - Create a dashboard so the client can see th results
+    - Add to the dashboard, visualisation plots showing correlation between features and target.
+    - Add to the dashboard, the results of the spearman and pearson analysis showing the monotonic and linear relationships if any.
+
+- As a beneficiary of 4 houses I want to be able to predict sale prices within a reasonable degree of accuaracy so that I can plan my future actions.
+
+    - Data preparation and Modelling phases of the CRISP-DM workflow.
+    ### Tasks
+    - Split data into train and test sets
+    - Carry out feature engineering analysis
+    - Implement the required transformations
+    - Create and evaluate an ML model which satisfies the business requirements
+    - Deploy the succesful ML model to a Streamlit dashboard so the user can utilize its functionality.
+    - Show the user, via the dashboard, how the model performs.
+    - Use plots to show how the model performed on both the test and train sets
+
 
 <p align="right"><a href="#intro">Return to table of contents</a></p><p id="rt"></p>
 
@@ -134,7 +221,7 @@ Complete an intro for this project.
 
 - Business Requirement 2:
 
-    - Deliver an ML system that is capable of reliably predicting the summed sales price of the 4 inherited houses and houses in this area.
+    - Deliver an ML model that is capable of reliably predicting the summed sales price of the 4 inherited houses and houses in this area.
 
     - Use either conventional ML or Neural Networks to map the relationships between the features and the target.
 
@@ -325,6 +412,10 @@ Complete an intro for this project.
     - Numpy
         - Used for scientific computing in Python. Numpy provides a multidimensional array object and a host of powerful methods for data manipulation.
         -  [numpy documentation](https://numpy.org/doc/stable/)
+
+    - Feature-Engine
+        - Feature-engine is a Python library with multiple transformers to engineer and select features to use in machine learning models
+        - [Feature-Engine documentation](https://feature-engine.trainindata.com/en/latest/)
     
     - SciKit-Learn
         - Used to train and build ML models using various algorithims.
