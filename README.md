@@ -1,6 +1,6 @@
 # Housing Heritage Issues.
 
-### Predictive model for the sale of house prices in Ames, Iowa
+### Predictive regression model for house sale prices in Ames, Iowa
 
 ![Dasboard Image](jupyter_notebooks/images/readme-images/Dashboard-Image.png)
 
@@ -192,7 +192,7 @@
         - Drop variables with no value to the end results if required
     - Carry out a correlation analysis on the dataset to understand and show via plots which attributes correlate with saleprice more than others.
     - Perform both Spearman and Pearson analysis to show which attributes correlate with sale price.
-    - Create a dashboard so the client can see th results
+    - Create a dashboard so the client can see the results
     - Add to the dashboard, visualisation plots showing correlation between features and target.
     - Add to the dashboard, the results of the spearman and pearson analysis showing the monotonic and linear relationships if any.
 
