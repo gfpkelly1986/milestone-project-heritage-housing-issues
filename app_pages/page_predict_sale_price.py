@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 from src.data_management import load_original_no_nan_data, load_inherited_houses, load_pkl_file
-from src.machine_learning.predict_sales_price import predict_inherited_sale_price
+from src.machine_learning.predict_sales_price import predict_inherited_sale_price, predict_generalised_sale_price
 import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set_style("whitegrid")
@@ -10,12 +10,11 @@ sns.set_style("whitegrid")
 
 def page_predict_sale_price_body():
 
-    version = 'v1'
-
     df_inherited = load_inherited_houses()
 
     predict_sale_price_model = load_pkl_file("outputs/ml_pipeline/predict_sale_price/v1/deploy_pca_pipeline.pkl")
 
+    predict_generalised_sale_price_model = load_pkl_file("outputs/ml_pipeline/predict_sale_price/v3/deploy_extratrees_pipeline.pkl")
 
     st.write("### Predict House Sale Price")
 
@@ -33,17 +32,82 @@ def page_predict_sale_price_body():
 
     st.write("---")
 
-    st.write(f"- Run the predicton button below to view the models prediction for the four inherited houses")
+    st.info(f"- Run the predicton button below to view the models prediction for the four inherited houses")
 
     X_live = df_inherited
     
 
-    if st.button("Run Predictive Analysis"):
+    if st.button("Run Predictive Analysis for Business Requirement 1"):
         predicted_price = predict_inherited_sale_price(X_live, predict_sale_price_model)
+
+    st.write("---")
+
+    X_live2 = DrawInputsWidgets()
+
+    st.info(f"- Run the predicton button below to view the models prediction for general houses in the area using their most correlated features.")
     
-    
-    
+    if st.button("Run Predictive Analysis for Business Requirement 2"):
+        predicted_price = predict_generalised_sale_price(X_live2, predict_generalised_sale_price_model)
 
 
+def DrawInputsWidgets():
+    df = load_original_no_nan_data()
+
+    col1, col2, col3, = st.beta_columns(3)
+    col4, col5, col6,  = st.beta_columns(3)
+
+    X_Live2 = pd.DataFrame([], index=[0])
+
+    with col1:
+        feature = "1stFlrSF"
+        st_widget = st.number_input(
+            label=feature,
+            min_value=df[feature].min(),
+            max_value=df[feature].max(),
+            value=int(df[feature].mean())
+        )
+    X_Live2[feature] = st_widget
+
+    with col2:
+        feature = "GarageArea"
+        st_widget = st.number_input(
+            label=feature,
+            min_value=df[feature].min(),
+            max_value=df[feature].max(),
+            value=int(df[feature].mean())
+        )
+    X_Live2[feature] = st_widget
+
+    with col3:
+        feature = "GrLivArea"
+        st_widget = st.number_input(
+            label=feature,
+            min_value=df[feature].min(),
+            max_value=df[feature].max(),
+            value=int(df[feature].median())
+        )
+    X_Live2[feature] = st_widget
+
+    with col4:
+        feature = "OverallQual"
+        st_widget = st.number_input(
+            label=feature,
+            min_value= 1,
+            max_value= 10,
+            value=5
+        )
+    X_Live2[feature] = st_widget
+
+    with col5:
+        feature = "YearBuilt"
+        st_widget = st.number_input(
+            label=feature,
+            min_value=df[feature].min(),
+            max_value=df[feature].max(),
+            value=int(df[feature].mean())
+        )
+    X_Live2[feature] = st_widget
+
+    return X_Live2
 
 

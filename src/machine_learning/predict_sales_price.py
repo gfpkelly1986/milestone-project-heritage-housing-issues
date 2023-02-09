@@ -10,7 +10,7 @@ def predict_inherited_sale_price(X_live, pipeline):
     # predict
     prediction = pipeline.predict(X_live)
 
-    # Acess the model for further elaboration!
+    # Access the model for further elaboration!
     regressor = pipeline.named_steps['model']
     num_features = regressor.n_features_in_
    
@@ -34,3 +34,20 @@ def predict_inherited_sale_price(X_live, pipeline):
             f"House C Predicted SalePrice:  **${house_c:,}**\n\n"
             f"House D Predicted SalePrice:  **${house_d:,}**\n\n"
             f"The Total predicted value of all the inherited properties comes to: **${total:,}**")
+
+
+def predict_generalised_sale_price(X_live, pipeline):
+    regressor = pipeline.named_steps['model']
+    num_features = regressor.n_features_in_
+
+    prediction = pipeline.predict(X_live)
+
+    st.write("---")
+    total = int(prediction)
+
+    st.success(f"### Predicted Sale Price for a Property in Ames Iowa With the Selected Inputs:\n\n"
+            f" **${total:,}**")
+
+    st.write("---")
+
+    
