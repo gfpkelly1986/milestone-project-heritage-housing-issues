@@ -112,6 +112,12 @@ def page_correlation_body():
                         with SalePrice"):
         plot_correlation_sale_price_kitchen_qual_overall_qual(
             df_further_analyis)
+        st.write("The above plot shows the distribution of\
+                    the quality of kitchens in the data, \
+                    how kitchen quality correlates with overall \
+                    quality and how larger houses, which tend to \
+                    be more modern, have better kitchen quality \
+                    and final Sale Prices.")
 
 
 def plot_correlation_sale_price_kitchen_qual_overall_qual(df):
