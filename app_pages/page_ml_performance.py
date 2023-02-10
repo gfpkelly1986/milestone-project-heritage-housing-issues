@@ -41,7 +41,7 @@ def page_model_performance_body():
 
     st.write("### Model Performance - Model Understanding")
 
-    st.info("- This model used Principal Component Analysis \
+    st.info("- The first model used Principal Component Analysis \
                with 2 components\n"
             "- It explained 92.05% of the variance in the \
                data with these components\n"
@@ -49,11 +49,29 @@ def page_model_performance_body():
                for this model. Values above 0.8 for train and\
                test sets were deemed acceptable.\n"
             "- The R2 score for the Train and Test sets are \
-               0.879 and 0.857 respectively.\n")
+               0.879 and 0.857 respectively.\n"
+            "- This model was trained on all features\
+               in the dataset. I felt that to choose \
+               values from widgets to make more general \
+               predictions, that this would clutter the \
+               dashboard and so chose to deploy a second model\
+               which needed less features to make its\
+               predictions.")
+
+    st.info("- The second model was an ExtraTreesRegressor \
+               which was trained on 5 important features \
+               outlined below.\n"
+            "- The R2 score was used as a performance metric\
+               for this model. Values above 0.8 for train and\
+               test sets were deemed acceptable.\n"
+            "- The R2 score for the Train and Test sets are \
+               0.904 and 0.871 respectively.\n")
 
     st.write("---")
     st.info("- This ML Pipeline was used for predicting \
-               the Sale Price of the 4 inherited houses\n"
+               the Sale Price of Lydia's 4 inherited houses\
+               using the full dataset as input, but ultimately\
+               only 2 components to make its predictions.\n"
             "- The exact features the model used to achieve \
                its performance are unknown as principal \
                component analysis was used.\n")
