@@ -18,6 +18,9 @@ def page_model_performance_body():
     extra_trees_plots = plt.imread(
         "outputs/ml_pipeline/predict_sale_price/v3/ExtraTreesRegressor-Plots.png")
 
+    extra_trees_feature_importance = plt.imread(
+        "outputs/ml_pipeline/predict_sale_price/v3/Feature-Importance.jpg")
+
     X_train = pd.read_csv(
         "outputs/ml_pipeline/predict_sale_price/v1/X_train.csv")
     X_test = pd.read_csv(
@@ -103,3 +106,9 @@ def page_model_performance_body():
                 sets shown below:\n")
 
     st.image(extra_trees_plots)
+
+    st.write("---")
+    st.write("- The features the ExtraTreesRegressor model\
+                was trained on and their importance.")
+    st.write(X_train2.columns.to_list())
+    st.image(extra_trees_feature_importance)
