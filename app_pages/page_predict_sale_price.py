@@ -1,9 +1,10 @@
-import numpy as np
 import pandas as pd
 import streamlit as st
-from src.data_management import load_original_no_nan_data, load_inherited_houses, load_pkl_file
-from src.machine_learning.predict_sales_price import predict_inherited_sale_price, predict_generalised_sale_price
-import matplotlib.pyplot as plt
+from src.data_management import load_original_no_nan_data
+from src.data_management import load_inherited_houses
+from src.data_management import load_pkl_file
+from src.machine_learning.predict_sales_price import predict_inherited_sale_price
+from src.machine_learning.predict_sales_price import predict_generalised_sale_price
 import seaborn as sns
 sns.set_style("whitegrid")
 
@@ -12,18 +13,24 @@ def page_predict_sale_price_body():
 
     df_inherited = load_inherited_houses()
 
-    predict_sale_price_model = load_pkl_file("outputs/ml_pipeline/predict_sale_price/v1/deploy_pca_pipeline.pkl")
+    predict_sale_price_model = load_pkl_file(
+        "outputs/ml_pipeline/predict_sale_price/v1/deploy_pca_pipeline.pkl")
 
-    predict_generalised_sale_price_model = load_pkl_file("outputs/ml_pipeline/predict_sale_price/v3/deploy_extratrees_pipeline.pkl")
+    predict_generalised_sale_price_model = load_pkl_file(
+        "outputs/ml_pipeline/predict_sale_price/v3/deploy_extratrees_pipeline.pkl")
 
     st.write("### Predict House Sale Price")
 
-    st.info(f"- The client has inherited 4 properties in Ames, Iowa."
-            f" She wants to maximize her sale price on these 4 inherited houses.\n"
-            f"- The model used to predict sale price uses 'principal component analysis'.\n"
-            f"- It has explained 92.05% of the variance in the data using just 2 components\n"
-            f"- This model satisfies Business Requirement 2.\n"
-            f"\n")
+    st.info("- The client has inherited 4 properties\
+               in Ames, Iowa."
+            " She wants to maximize her sale price \
+               on these 4 inherited houses.\n"
+            "- The model used to predict sale price \
+               uses 'principal component analysis'.\n"
+            "- It has explained 92.05% of the variance \
+               in the data using just 2 components\n"
+            "- This model satisfies Business Requirement 2.\n"
+            "\n")
 
     st.write("---")
 
@@ -32,22 +39,29 @@ def page_predict_sale_price_body():
 
     st.write("---")
 
-    st.info(f"- Run the predicton button below to view the models prediction for the four inherited houses")
+    st.info("- Run the predicton button below to view \
+        the models prediction for the four inherited houses")
 
     X_live = df_inherited
-    
 
-    if st.button("Run Predictive Analysis for Business Requirement 1"):
-        predicted_price = predict_inherited_sale_price(X_live, predict_sale_price_model)
+    if st.button("Run Predictive Analysis for \
+                    Business Requirement 1"):
+        predicted_price = predict_inherited_sale_price(
+            X_live, predict_sale_price_model)
 
     st.write("---")
 
     X_live2 = DrawInputsWidgets()
 
-    st.info(f"- Run the predicton button below to view the models prediction for general houses in the area using their most correlated features.")
-    
-    if st.button("Run Predictive Analysis for Business Requirement 2"):
-        predicted_price = predict_generalised_sale_price(X_live2, predict_generalised_sale_price_model)
+    st.info("- Run the predicton button below to view \
+               the models prediction for general \
+               houses in the area using their most \
+               correlated features.")
+
+    if st.button("Run Predictive Analysis for \
+                  Business Requirement 2"):
+        predicted_price = predict_generalised_sale_price(
+            X_live2, predict_generalised_sale_price_model)
 
 
 def DrawInputsWidgets():
@@ -92,8 +106,8 @@ def DrawInputsWidgets():
         feature = "OverallQual"
         st_widget = st.number_input(
             label=feature,
-            min_value= 1,
-            max_value= 10,
+            min_value=1,
+            max_value=10,
             value=5
         )
     X_Live2[feature] = st_widget
@@ -109,5 +123,3 @@ def DrawInputsWidgets():
     X_Live2[feature] = st_widget
 
     return X_Live2
-
-
