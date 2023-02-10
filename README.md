@@ -214,7 +214,13 @@
 
 <p align="right"><a href="#intro">Return to table of contents</a></p><p id="us"></p>
 
-## User Stories
+## Epics and User Stories
+
+### Epic
+
+- Deliver a client dashboard that will both visualize correlation analysis results and make predictions for both a small set of inherited houses and also for properties in the surrounding area.
+
+### User Stories
 
 - As a beneficiary of 4 houses I want to understand how house attributes correlate with sale price so I can understand the market better in Iowa.
 
