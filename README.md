@@ -1,6 +1,4 @@
-# Housing Heritage Issues.
-
-### Predictive regression model for house sale prices in Ames, Iowa
+# Housing Heritage Issues - A Predictive Regression Model for House Sale Prices in Ames, Iowa
 
 ![Dasboard Image](jupyter_notebooks/images/readme-images/Dashboard-Image.png)
 
@@ -8,23 +6,57 @@
 
 - Intended Purpose of This Project:
 
-- This machine learning project was undertaken for my fifth project with the Code Institute, which was part of the Predictive Analytics module. We were set the task of building an ML pipeline which would predict the sale price of 4 houses, which were inherited by a fictional indivdual called Lydia Doe, based on various factors such as overall quality, size in square feet, number of rooms, age of the property, and others (full dataset features below). The machine learning task was a regression task.
+- This machine learning project was undertaken for my fifth project with the Code Institute, which was part of the Predictive Analytics module. We were set the task of building an ML pipeline which would predict the sale price of 4 houses, which were inherited by a fictional indivdual called Lydia Doe, based on various factors such as overall quality, size in square feet, number of rooms, age of the property, and others (full dataset features below). The machine learning task was a regression task. 
 
-- The project followed the CRISP-DM workflow phases of: 
-    - Business Understanding 
-    - Data Understanding
-    - Data Preparation
-    - Modelling
-    - Evaluation
-    - Deployment
+- The live Streamlit application is hosted on Heroku and can be viewed and tested at this link: [Heritage Houses Live Site](https://house-value-predictor-gfpkelly.herokuapp.com/)
+
+- The project followed the CRISP-DM workflow, Cross Industry Standard Process for Data mining. This workflow contains 6 phases which are shown in the image below: 
+    
+<p align=center><img src='jupyter_notebooks/images/readme-images/CRISPDM-image.jpg' alt='researchgate.com image of CRISPDM workflow'/></p><br>
+
+- Business Understanding
+    - The Business Understanding phase focuses on understanding the objectives and requirements of the project by
+        - Understand what the client is trying to benefit by using an ML model.
+        - Is there sufficient data available to satisfy the Business requirements.
+        - What does succes look like? How will it be measured?
+        - What tooling and technologies will be required? Dashboard or API?
+- Data Understanding
+    -  Collect and analyse the data sets that will help you to satisfy the project goals.
+        - Access and load the data.
+        - Study the relationships, data types and quantity of values contained for features and target variables.
+        - Explore approached to NAN values in the data.
+- Data Preparation
+    - Prepare the data for the modelling phase.
+        - Categorical and/or Numerical treansformations.
+        - Impute missing values with means/medians where necessary.
+        - Group NaN values with categories such as None or No where necessary.
+        - Is the data the correct type for the requirements of the ML model?
+        - Drop unnecessary columns; Example: columns with empty values > 80%-90% of the column totals.
+- Modelling
+    - What modelling task is required?
+    - Split data into Train and Test Sets.
+    - Fit data to Train set using default hyperparameters.
+    - Iterate the process of:
+        - Evaluate performance of hyperparameters
+        - Adjust hyperparameter choices/values 
+    - When performing well on the training data perform *'feature importance'* analysis to refine the number of features required to make accurate predictions.
+    - Re-Write the pipeline but filter the Train set this time with only the most important features.
+    - Evaluate the model is working correctly with refined features.
+- Evaluation
+    - Does the model meet the *'Business Requirements'*?
+    - Explain results via metrics and visualisations.
+    - Deploy model
+
+
+- Business Requirements
 
 - The project had 2 business requirements:
-    1. Carry out a correlation analyis to show which house attributes correlate with Sale Price.
+    1. Carry out a correlation analysis to show which house attributes correlate with Sale Price.
     2. Deploy a pipeline to predict the sale price of Lydia's inherited houses.
 
 - The regression model was evaluated using mainly the R2 score, which to satisfy the business requirements needed to have a value of 0.8 or above for both the Train and Test sets.
 
-- The business requirements are satisfied by the Streamlit dashboard application which encompasses a page to view the correlation analysis, the predicted house values and the performance of the model.
+- The business requirements are satisfied by the deployed Streamlit dashboard application which encompasses a page to visualise the correlation analysis results via various plots, a page where you can predicted house values for Lydia's inherited houses, and houses in the area of Ames Iowa, and a page where you can view the performance metrics used to evaluate the ML model.
 
 </p>
 
@@ -39,6 +71,7 @@
 - <a href="#wf">Wireframe of Dashboard</a>
 - <a href="#dep">Deployment</a>
 - <a href="#tu">Technologies Used</a>
+- <a href="#ts">Testing</a>
 - <a href="#bu">Bugs</a>
 - <a href="#cr">Credits</a>
 
@@ -47,7 +80,9 @@
 
 ## Dataset Content
 
-- The dataset for this project is sourced from [Kaggle](https://www.kaggle.com/datasets/codeinstitute/housing-prices-data).
+- The dataset for this project was sourced here: [Kaggle](https://www.kaggle.com/datasets/codeinstitute/housing-prices-data).
+
+    - Kaggle has over 50,000 public datasets available on its website for practicing data science work.
 
 - The features in this dataset are:
 
@@ -432,6 +467,21 @@
         - Streamlit was used to provide a front end dashboard for this project.
         - [Streamlit documentation](https://docs.streamlit.io/)
 
+<p align="right"><a href="#intro">Return to table of contents</a></p><p id="ts"></p>
+
+## Testing
+
+- Below is the list of issues that were highlighted when running flake8 to check the Python code in app_pages:
+
+![Issues before running flake8](jupyter_notebooks/images/readme-images/Testing-with-flake8.jpg)
+<hr>
+
+- Below is the list of remaining 'issues' after completing the recommended fixes.
+
+- I kept the filepaths long as they would not render correctly in the dashboard when broken with a \\ .
+
+![Remaining flake8 issues](jupyter_notebooks/images/readme-images/flake8-remaining-long-filepaths-only.jpg)
+<hr>
 <p align="right"><a href="#intro">Return to table of contents</a></p><p id="bu"></p>
 
 ## Bugs
@@ -442,7 +492,12 @@
 
     - Issue with plots not displaying correctly, or at all, in GitPod
         - Thank you to Niel in CI for help with this bug. %matplotlib inline placed before the code where the plots were drawn solved this issue.
-        - I had to add it to the 'FeatureEngineeringAnalysis' function provided by CI on line 7 where additional columns are created and also for some of my own plots.
+        - I had to add it to the 'FeatureEngineeringAnalysis' function provided by CI on line 7 where additional columns are created and also for some of my own plots.<br><br>
+
+- Just to point out a small item: I have 2 versions in the outputs folder but they are named v1 and v3. v2 was an attempt at using some of the most corellated variables to make a prediction for the general houses in Ames.
+    - This was of course a mistake as the predictions were completely inaccurate and so I deleted that model version and the work done on it.
+    - To give an example the PCA pipeline was predicting a values of $131,000 for the first house in Lydia's dataset and this pipeline, if you set the widgets to the same values, was predicting $636,000 for the same property.
+    - Currently the ExtraTreesRegressor and the PCA pipeline are within $3,800 dollars if using the same values as House A when using the 5 widgets.
 
 <p align="right"><a href="#intro">Return to table of contents</a></p><p id="cr"></p>
 
