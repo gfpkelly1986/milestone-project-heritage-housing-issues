@@ -195,12 +195,13 @@
 
     - Regression analysis showing which features have more impact on the target over others.
         - Regression Metrics:
-            - PCA analysis used to narrow the components which impact variance.
+            - PCA analysis using just 2 components.
+            - ExtraTreesRegressor uses only 5 features
             - R2 (coefficient of determination)
-                - 0.8 or above for R2 score on train set, without too much deviation on the test set.
-            - Mean Squared Error (MSE), limited deviation between train and test set.
-            - Root Mean Squared Error (RMSE), limited deviation between train and test set.
-            - Mean Absolute Error (MAE), limited deviation between train and test set.
+                - 0.8 or above for R2 score on train set, without too much deviation on the test set for both models.
+            - Mean Squared Error (MSE), limited deviation between train and test set for both models.
+            - Root Mean Squared Error (RMSE), limited deviation between train and test set for both models.
+            - Mean Absolute Error (MAE), limited deviation between train and test set for both models.
 
 - Hypothesis:
 
@@ -208,7 +209,7 @@
 
 - Validation
 
-    - A correlation analysis, with plots, showing correlation between yearbuilt and high sale values.
+    - A correlation analysis, with visualization plots, showing correlation between YearBuilt, YearRemodAdd, square footage and high sale values.
 
 
 
@@ -283,8 +284,8 @@
     - Our ideal outcome is: to provide the client with a model that will predict the sale price of her inherited house to within +- 0.05% of the realised sale price.
     - The model success metrics are: 0.8 or above on both the Train and Test sets R2 score.
     -  Model failure is to be defined as:
-        - (A) a model which makes predictions outside of the range specified for acceptable predictions.
-        - (B) A model which predicts higher values for smaller houses than for larger houses. It is expected that square footage/area will be a key driver of 'Sale Price'.
+        - A model which does not perform to the R2 metric of 0.8 for both Train and Test sets.
+        - A model which predicts higher values for smaller houses than for larger houses. It is expected that square footage/area will be a key driver of 'Sale Price'.
     - The output is defined as: *Predicted Sale Price*. This is a continuous value. 
     - The training data to fit the model comes from: [kaggle.com](https://www.kaggle.com/datasets/codeinstitute/housing-prices-data)
         - This dataset contains: 1460 rows and 24 of data.
@@ -539,3 +540,4 @@
 - Custom Class Provided:
 
     - class HyperparameterOptimizationSearch:
+    
