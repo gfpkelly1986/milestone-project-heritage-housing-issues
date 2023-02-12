@@ -45,7 +45,7 @@ def page_predict_sale_price_body():
     X_live = df_inherited
 
     if st.button("Run Predictive Analysis for \
-                    Business Requirement 1"):
+                    Business Requirement 2 (A)"):
         predicted_price = predict_inherited_sale_price(
             X_live, predict_sale_price_model)
 
@@ -53,13 +53,12 @@ def page_predict_sale_price_body():
 
     X_live2 = DrawInputsWidgets()
 
-    st.info("- Run the predicton button below to view \
-               the models prediction for general \
-               houses in the area using their most \
-               correlated features.")
+    st.info("- Adjust the widgets and run the predicton\
+               button below to view the  models prediction \
+               for general houses in the Ames area.")
 
     if st.button("Run Predictive Analysis for \
-                  Business Requirement 2"):
+                  Business Requirement 2 (B)"):
         predicted_price = predict_generalised_sale_price(
             X_live2, predict_generalised_sale_price_model)
 
